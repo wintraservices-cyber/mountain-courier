@@ -36,6 +36,7 @@
   var chatForm = document.getElementById('chatForm');
   var input = document.getElementById('chatIn');
   var chips = document.getElementById('chips');
+  if (!launch) return;
 
   function setOpen(open) {
     chat.classList.toggle('open', open);
