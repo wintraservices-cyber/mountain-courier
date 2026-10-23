@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700;800&family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.add('js');</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M3 26 13 8l6 10 3-5 7 13z' fill='%231F3B2D'/%3E%3C/svg%3E">
 </head>
 <body>
@@ -35,90 +36,178 @@
 </header>
 
 <main id="top">
-  <section class="hero">
-    <div class="wrap">
-      <div>
-        <h1>Your mail, picked up and brought down the driveway.</h1>
-        <p class="lede">We collect mail and packages from your P.O. Box or the post office and deliver them to your home or business across Lake Arrowhead and the San Bernardino Mountains. Send a request any time of day.</p>
-        <div class="actions">
-          <a class="btn btn-primary" href="#request">Request a pickup</a>
-          <a class="btn btn-ghost" href="tel:+19515656466">Call (951) 565-6466</a>
-        </div>
-        <ul class="facts">
-          <li>Licensed and bonded</li>
-          <li>Requests taken 24/7</li>
-          <li>Runs Monday to Friday</li>
-        </ul>
-      </div>
-
-      <div class="tag" aria-label="How the service works, shown as a parcel tag">
-        <div class="tag-stamp">Local since 2008</div>
-        <div class="tag-row">
-          <div class="tag-key">From</div>
-          <div class="tag-val">Your P.O. Box</div>
-        </div>
-        <div class="tag-row">
-          <div class="tag-key">To</div>
-          <div class="tag-val">Your front door</div>
-        </div>
-        <div class="tag-row">
-          <div class="tag-key">Handled by</div>
-          <div class="tag-val">A neighbor who knows the roads</div>
-        </div>
+  <!-- HERO: animated mountain route -->
+  <section class="hero hero-scene" aria-labelledby="hero-title">
+    <div class="wrap hero-copy">
+      <div class="status-pill" id="statusPill" aria-live="polite"><span class="dot"></span><span id="statusText">Taking requests</span></div>
+      <h1 id="hero-title"><span class="line">Your mail, picked up</span> <span class="line">and brought down the driveway.</span></h1>
+      <p class="lede">We collect mail and packages from your P.O. Box or the post office and deliver them to your home or business across Lake Arrowhead and the San Bernardino Mountains. Send a request any time of day.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#request">Request a pickup</a>
+        <a class="btn btn-ghost" href="tel:+19515656466">Call (951) 565-6466</a>
       </div>
     </div>
+
+    <div class="scene" id="scene" aria-hidden="true">
+      <svg viewBox="0 150 1440 410" preserveAspectRatio="xMidYMax meet" class="scene-svg">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#F6F8F7" stop-opacity="0"/>
+            <stop offset="1" stop-color="#DCE8E4"/>
+          </linearGradient>
+          <linearGradient id="lake" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#2B6E8F" stop-opacity=".55"/>
+            <stop offset="1" stop-color="#2B6E8F" stop-opacity=".85"/>
+          </linearGradient>
+          <symbol id="pine" viewBox="0 0 40 90">
+            <path d="M20 0 L34 32 H26 L38 58 H28 L40 82 H0 L12 58 H2 L14 32 H6 Z"/>
+            <rect x="17" y="80" width="6" height="10"/>
+          </symbol>
+        </defs>
+
+        <rect y="150" width="1440" height="410" fill="url(#sky)"/>
+        <circle class="sun" cx="1140" cy="232" r="40" fill="#EADBC4"/>
+
+        <g class="layer" data-depth="0.15">
+          <path d="M0 330 L120 250 L210 300 L330 190 L450 280 L560 220 L690 300 L800 200 L930 270 L1050 180 L1180 270 L1300 220 L1440 280 V560 H0Z" fill="#B9CCC5"/>
+          <path d="M330 190 L360 212 L345 214 L372 232 L300 222Z M1050 180 L1080 205 L1062 206 L1092 228 L1020 214Z" fill="#F6F8F7" opacity=".9"/>
+        </g>
+        <g class="layer" data-depth="0.3">
+          <path d="M0 380 L160 300 L300 360 L440 290 L600 370 L760 300 L920 380 L1080 310 L1240 370 L1440 320 V560 H0Z" fill="#7F9C90"/>
+        </g>
+        <path d="M520 420 C640 400 820 400 980 424 C900 446 640 450 520 420Z" fill="url(#lake)" class="lake"/>
+        <g class="layer" data-depth="0.5" fill="#2A4C3B">
+          <use href="#pine" x="20" y="330" width="44" height="100"/><use href="#pine" x="70" y="350" width="36" height="82"/>
+          <use href="#pine" x="300" y="360" width="40" height="90"/><use href="#pine" x="350" y="372" width="30" height="70"/>
+          <use href="#pine" x="1060" y="350" width="40" height="90"/><use href="#pine" x="1110" y="368" width="32" height="74"/>
+          <use href="#pine" x="1380" y="340" width="44" height="100"/>
+        </g>
+
+        <!-- ground -->
+        <path d="M0 460 C300 430 520 470 760 452 C1000 434 1200 470 1440 450 V560 H0Z" fill="#1F3B2D"/>
+
+        <!-- road -->
+        <path id="road" d="M190 500 C330 500 360 450 500 456 C660 462 640 520 820 510 C980 500 1020 452 1160 458 C1210 460 1240 470 1262 480" fill="none" stroke="#4A5660" stroke-width="16" stroke-linecap="round"/>
+        <path d="M190 500 C330 500 360 450 500 456 C660 462 640 520 820 510 C980 500 1020 452 1160 458 C1210 460 1240 470 1262 480" fill="none" stroke="#EADBC4" stroke-width="2" stroke-dasharray="10 12" class="road-dash"/>
+
+        <!-- post office -->
+        <g transform="translate(110 438)">
+          <rect x="0" y="12" width="96" height="56" fill="#F6F8F7" stroke="#17212A" stroke-width="2"/>
+          <path d="M-8 14 L48 -16 L104 14Z" fill="#B8894D" stroke="#17212A" stroke-width="2"/>
+          <rect x="38" y="36" width="20" height="32" fill="#2B6E8F"/>
+          <rect x="10" y="28" width="18" height="14" fill="#DCE8E4" stroke="#17212A" stroke-width="1.5"/>
+          <rect x="68" y="28" width="18" height="14" fill="#DCE8E4" stroke="#17212A" stroke-width="1.5"/>
+          <line x1="48" y1="-16" x2="48" y2="-44" stroke="#17212A" stroke-width="2"/>
+          <path class="flag" d="M48 -44 h22 l-5 6 l5 6 h-22z" fill="#2B6E8F"/>
+          <text x="48" y="24" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="10" font-weight="700" fill="#17212A">P.O.</text>
+        </g>
+
+        <!-- cabin -->
+        <g transform="translate(1250 424)">
+          <rect x="0" y="22" width="92" height="56" fill="#B8894D" stroke="#17212A" stroke-width="2"/>
+          <path d="M-12 26 L46 -14 L104 26Z" fill="#1F3B2D" stroke="#17212A" stroke-width="2"/>
+          <path d="M-12 26 L46 -14 L104 26" fill="none" stroke="#F6F8F7" stroke-width="5" class="roof-snow"/>
+          <rect x="62" y="44" width="18" height="34" fill="#17212A"/>
+          <rect x="14" y="40" width="22" height="18" fill="#F3D9A0" class="window"/>
+          <rect x="72" y="-6" width="10" height="22" fill="#4A5660"/>
+          <g class="smoke"><circle cx="77" cy="-14" r="6" fill="#DCE8E4"/><circle cx="84" cy="-28" r="8" fill="#DCE8E4"/><circle cx="78" cy="-46" r="10" fill="#DCE8E4"/></g>
+          <!-- mailbox -->
+          <g transform="translate(-30 50)"><rect x="0" y="0" width="22" height="14" rx="7" fill="#2B6E8F"/><rect x="9" y="14" width="4" height="16" fill="#17212A"/><rect class="mb-flag" x="20" y="-6" width="3" height="12" fill="#C2513B"/></g>
+        </g>
+
+        <!-- van -->
+        <g id="van">
+          <g transform="translate(-30 -34)">
+            <rect x="0" y="6" width="44" height="22" rx="3" fill="#F6F8F7" stroke="#17212A" stroke-width="2"/>
+            <path d="M44 12 h10 l8 9 v7 h-18z" fill="#F6F8F7" stroke="#17212A" stroke-width="2"/>
+            <path d="M46 14 h7 l5 6 h-12z" fill="#2B6E8F"/>
+            <rect x="6" y="12" width="30" height="8" fill="#1F3B2D"/>
+            <circle cx="12" cy="30" r="5.5" fill="#17212A"/><circle cx="50" cy="30" r="5.5" fill="#17212A"/>
+            <circle cx="12" cy="30" r="2" fill="#B8894D"/><circle cx="50" cy="30" r="2" fill="#B8894D"/>
+          </g>
+          <g class="parcel" transform="translate(-14 -54)">
+            <rect x="0" y="0" width="16" height="12" fill="#B8894D" stroke="#17212A" stroke-width="1.5"/>
+            <line x1="8" y1="0" x2="8" y2="12" stroke="#17212A" stroke-width="1.5"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <canvas id="snow" class="snow"></canvas>
+    <button class="snow-toggle" id="snowToggle" type="button" aria-pressed="true">Snow on</button>
   </section>
 
   <section class="section" id="services">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head reveal">
         <h2>What we handle</h2>
         <p>Skip the trip to the post office, the line at the counter, and the drive in the snow.</p>
       </div>
-      <ul class="services">
-        <li><h3>Mail and package pickup</h3><p>We collect from your P.O. Box or the post office counter and bring it to your home or business.</p></li>
-        <li><h3>Outgoing packages</h3><p>We pick up labeled packages from your door and drop them off with the carrier.</p></li>
-        <li><h3>Banking runs</h3><p>Deposits and change orders for local businesses, on a schedule that fits your week.</p></li>
-        <li><h3>Business mail</h3><p>Regular mail handling for offices, shops, and rentals, so nothing sits in a box for days.</p></li>
-        <li><h3>Seasonal residents</h3><p>Away for the winter or only up on weekends? Ask how we can hold, deliver, or forward your mail.</p></li>
-        <li><h3>Packages that come back</h3><p>Carriers often reroute mountain deliveries to the post office. We go get them before they're sent back.</p></li>
+      <ul class="services stagger">
+        <li><svg class="ico" viewBox="0 0 32 32"><rect x="4" y="9" width="24" height="16" rx="2"/><path d="M4 11l12 8 12-8"/></svg><h3>Mail and package pickup</h3><p>We collect from your P.O. Box or the post office counter and bring it to your home or business.</p></li>
+        <li><svg class="ico" viewBox="0 0 32 32"><path d="M6 12l10-5 10 5v12l-10 5-10-5z"/><path d="M6 12l10 5 10-5M16 17v12"/></svg><h3>Outgoing packages</h3><p>We pick up labeled packages from your door and drop them off with the carrier.</p></li>
+        <li><svg class="ico" viewBox="0 0 32 32"><path d="M5 13l11-6 11 6"/><path d="M8 13v10M14 13v10M18 13v10M24 13v10M5 25h22"/></svg><h3>Banking runs</h3><p>Deposits and change orders for local businesses, on a schedule that fits your week.</p></li>
+        <li><svg class="ico" viewBox="0 0 32 32"><rect x="6" y="5" width="20" height="23" rx="2"/><path d="M11 11h10M11 16h10M11 21h6"/></svg><h3>Business mail</h3><p>Regular mail handling for offices, shops, and rentals, so nothing sits in a box for days.</p></li>
+        <li><svg class="ico" viewBox="0 0 32 32"><path d="M16 4v24M6 10l20 12M26 10L6 22"/></svg><h3>Seasonal residents</h3><p>Away for the winter or only up on weekends? Ask how we can hold, deliver, or forward your mail.</p></li>
+        <li><svg class="ico" viewBox="0 0 32 32"><path d="M24 12a9 9 0 1 0 1 7"/><path d="M25 5v7h-7"/></svg><h3>Packages that come back</h3><p>Carriers often reroute mountain deliveries to the post office. We go get them before they're sent back.</p></li>
       </ul>
     </div>
   </section>
 
-  <section class="section" id="how">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>How it works</h2>
-        <p>Three steps, and you never have to leave the house.</p>
+  <!-- HOW IT WORKS: scroll-driven route -->
+  <section class="route-section" id="how" aria-labelledby="how-title">
+    <div class="route-sticky">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="how-title">How it works</h2>
+          <p>Three steps, and you never have to leave the house.</p>
+        </div>
+        <div class="route-track" aria-hidden="true">
+          <svg viewBox="0 0 1000 120" preserveAspectRatio="none" class="route-svg">
+            <path id="routePath" d="M20 80 C200 20 300 110 500 60 C700 10 800 100 980 50" fill="none" stroke="#D9E0DD" stroke-width="6" stroke-linecap="round"/>
+            <path id="routeDraw" d="M20 80 C200 20 300 110 500 60 C700 10 800 100 980 50" fill="none" stroke="#B8894D" stroke-width="6" stroke-linecap="round"/>
+          </svg>
+          <div class="route-van" id="routeVan">
+            <svg viewBox="0 0 64 36"><rect x="2" y="6" width="40" height="20" rx="3" fill="#1F3B2D"/><path d="M42 11h9l9 9v6H42z" fill="#1F3B2D"/><path d="M44 13h6l6 6H44z" fill="#B9D3E0"/><circle cx="12" cy="28" r="5" fill="#17212A"/><circle cx="50" cy="28" r="5" fill="#17212A"/></svg>
+          </div>
+        </div>
+        <ol class="steps route-steps">
+          <li data-at="0"><h3>Send a request</h3><p>Use the form or the chat, day or night. Tell us where to pick up and where it's going.</p></li>
+          <li data-at="0.45"><h3>Get a confirmation</h3><p>We text or email you with the run time and the price before anything is scheduled.</p></li>
+          <li data-at="0.85"><h3>We deliver</h3><p>Your mail or package arrives on the next available run, Monday to Friday.</p></li>
+        </ol>
       </div>
-      <ol class="steps">
-        <li><h3>Send a request</h3><p>Use the form or the chat, day or night. Tell us where to pick up and where it's going.</p></li>
-        <li><h3>Get a confirmation</h3><p>We text or email you with the run time and the price before anything is scheduled.</p></li>
-        <li><h3>We deliver</h3><p>Your mail or package arrives on the next available run, Monday to Friday.</p></li>
-      </ol>
     </div>
   </section>
 
   <section class="section request-section" id="request">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head reveal">
         <h2>Request a pickup or delivery</h2>
         <p>Requests sent after hours are confirmed the next business morning.</p>
       </div>
       <div class="request-grid">
-        <div class="request-aside">
+        <div class="request-aside reveal">
           <dl>
             <dt>Prefer to call?</dt>
-            <dd><a href="tel:+19515656466" style="color:#fff">(951) 565-6466</a></dd>
+            <dd><a href="tel:+19515656466">(951) 565-6466</a></dd>
             <dt>Email</dt>
-            <dd><a href="mailto:mountaincourierservice@yahoo.com" style="color:#fff">mountaincourierservice@yahoo.com</a></dd>
+            <dd><a href="mailto:mountaincourierservice@yahoo.com">mountaincourierservice@yahoo.com</a></dd>
             <dt>Pricing</dt>
             <dd>Every run is quoted before it's booked. No surprise charges.</dd>
           </dl>
+          <div class="mailbox-art" aria-hidden="true">
+            <svg viewBox="0 0 160 140">
+              <rect x="70" y="70" width="10" height="70" fill="#D3DED8"/>
+              <path d="M30 40 a30 30 0 0 1 60 0 v34 h-60z" fill="#2B6E8F" stroke="#F6F8F7" stroke-width="3"/>
+              <rect class="mb-door" x="30" y="40" width="10" height="34" fill="#1E5A75"/>
+              <rect class="mb-flag2" x="88" y="22" width="5" height="30" fill="#C2513B"/>
+              <rect class="mb-flag2" x="88" y="22" width="18" height="10" fill="#C2513B"/>
+            </svg>
+            <svg class="flying-letter" id="flyingLetter" viewBox="0 0 40 28"><rect x="1" y="1" width="38" height="26" rx="2" fill="#F6F8F7" stroke="#B8894D" stroke-width="2"/><path d="M1 3l19 13L39 3" fill="none" stroke="#B8894D" stroke-width="2"/></svg>
+          </div>
         </div>
 
-        <form class="request-form" id="requestForm" novalidate>
+        <form class="request-form reveal" id="requestForm" novalidate>
           <div class="field-row">
             <div class="field"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" required></div>
             <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel" required></div>
@@ -146,7 +235,7 @@
             </select>
           </div>
           <div class="field"><label for="notes">Notes <span class="hint">(gate code, number of packages)</span></label><textarea id="notes" name="notes" rows="3"></textarea></div>
-          <button class="btn btn-primary" type="submit">Send request</button>
+          <button class="btn btn-primary send-btn" type="submit"><span class="send-label">Send request</span></button>
           <div class="confirm" id="confirm" role="status" aria-live="polite"></div>
         </form>
       </div>
@@ -155,28 +244,33 @@
 
   <section class="section" id="hours">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head reveal">
         <h2>Hours</h2>
         <p>The request line never closes. The truck runs on weekdays.</p>
       </div>
-      <div class="hours">
-        <div><strong>Pickups and deliveries</strong><span>Monday to Friday, 8am to 4pm</span></div>
-        <div><strong>Requests</strong><span>Online and by chat, any time</span></div>
-        <div><strong>After-hours requests</strong><span>Confirmed the next business morning</span></div>
+      <div class="week reveal" id="week" aria-label="Weekly schedule">
+        <div data-d="1"><b>Mon</b><span>8–4</span></div>
+        <div data-d="2"><b>Tue</b><span>8–4</span></div>
+        <div data-d="3"><b>Wed</b><span>8–4</span></div>
+        <div data-d="4"><b>Thu</b><span>8–4</span></div>
+        <div data-d="5"><b>Fri</b><span>8–4</span></div>
+        <div data-d="6" class="off"><b>Sat</b><span>Requests only</span></div>
+        <div data-d="0" class="off"><b>Sun</b><span>Requests only</span></div>
       </div>
+      <p class="week-note" id="weekNote">Requests are taken online and by chat any time. After-hours requests are confirmed the next business morning.</p>
     </div>
   </section>
 
   <section class="section faq" id="faq">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head reveal">
         <h2>Questions people ask</h2>
       </div>
-      <details><summary>Which towns do you cover?</summary><p>Lake Arrowhead and the surrounding mountain communities. Send your address with your request and we'll confirm it's on the route.</p></details>
-      <details><summary>How much does a pickup cost?</summary><p>It depends on the run and how often you need it. You'll get the exact price by text or email before anything is booked.</p></details>
-      <details><summary>Can you pick up from my P.O. Box?</summary><p>Yes. We'll walk you through the authorization the post office needs so we can collect on your behalf.</p></details>
-      <details><summary>My package says delivered but it went to the post office. Can you help?</summary><p>Yes, that happens often on the mountain. Send us the tracking number and we'll pick it up before it's returned to the sender.</p></details>
-      <details><summary>Do you run on weekends or in snow?</summary><p>Runs go out Monday to Friday. In heavy weather we'll text you if a run needs to move to the next safe day.</p></details>
+      <details><summary>Which towns do you cover?</summary><div class="faq-body"><p>Lake Arrowhead and the surrounding mountain communities. Send your address with your request and we'll confirm it's on the route.</p></div></details>
+      <details><summary>How much does a pickup cost?</summary><div class="faq-body"><p>It depends on the run and how often you need it. You'll get the exact price by text or email before anything is booked.</p></div></details>
+      <details><summary>Can you pick up from my P.O. Box?</summary><div class="faq-body"><p>Yes. We'll walk you through the authorization the post office needs so we can collect on your behalf.</p></div></details>
+      <details><summary>My package says delivered but it went to the post office. Can you help?</summary><div class="faq-body"><p>Yes, that happens often on the mountain. Send us the tracking number and we'll pick it up before it's returned to the sender.</p></div></details>
+      <details><summary>Do you run on weekends or in snow?</summary><div class="faq-body"><p>Runs go out Monday to Friday. In heavy weather we'll text you if a run needs to move to the next safe day.</p></div></details>
     </div>
   </section>
 </main>
@@ -196,7 +290,7 @@
   </div>
 </footer>
 
-<button class="chat-launch" id="chatLaunch" aria-expanded="false" aria-controls="chat">Ask a question</button>
+<button class="chat-launch" id="chatLaunch" aria-expanded="false" aria-controls="chat"><span class="pulse"></span>Ask a question</button>
 <div class="chat" id="chat" role="dialog" aria-label="Virtual assistant (demo)">
   <div class="chat-head"><b>Ask us anything</b><button type="button" id="chatClose" aria-label="Close chat">&times;</button></div>
   <div class="chat-body" id="chatBody" aria-live="polite">
@@ -208,7 +302,7 @@
     <button type="button">Pick up from my P.O. Box</button>
   </div>
   <form class="chat-input" id="chatForm">
-    <label for="chatIn" class="sr" style="position:absolute;left:-9999px">Message</label>
+    <label for="chatIn" class="sr-only">Message</label>
     <input id="chatIn" placeholder="Type a question" autocomplete="off">
     <button type="submit">Send</button>
   </form>

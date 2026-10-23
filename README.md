@@ -2,8 +2,8 @@
 
 ArrowheadX prospect demo for Mountain Courier Service (Lake Arrowhead, CA).
 
-- `index.html` — redesigned site: pickup request form, 24/7 chat (scripted demo), how it works, hours, FAQ
-- `compare.html` — current site vs. demo, plus how the service compares with P.O. Box self-pickup, Uber Courier/Direct, and Arrowhead Express Expedited
+- `index.html` — animated redesign: mountain-scene hero (van drives P.O. → cabin, parallax ridges, snowfall toggle), live Pacific-time status badge, scroll-driven "how it works" route, pickup request form with send animation, live weekly schedule, FAQ, 24/7 chat (scripted demo) with typing indicator. Respects reduced-motion.
+- `compare.html` — current site (general contact form, phone, email) vs. demo, plus how the service compares with P.O. Box self-pickup, Uber Courier/Direct, and Arrowhead Express Expedited
 - `styles.css`, `app.js` — shared styles and demo behavior
 
 Static site, no build step. Deployed on Vercel. Pages are `noindex` so the demo never competes with the business's real site in search.
